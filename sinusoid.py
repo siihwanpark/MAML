@@ -63,7 +63,7 @@ class Sinusoid(Dataset):
         inputs = torch.tensor(inputs, dtype = torch.float)
         targets = torch.tensor(targets, dtype = torch.float)
 
-        return inputs[:self.k_shot], targets[:self.k_shot], inputs[self.k_shot:], targets[self.k_shot:]
+        return inputs[:self.k_shot], targets[:self.k_shot], inputs[self.k_shot:], targets[self.k_shot:], (amplitude, phase)
 
 if __name__ == '__main__':
     from torch.utils.data import DataLoader
