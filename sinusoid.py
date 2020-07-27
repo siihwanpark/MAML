@@ -60,8 +60,8 @@ class Sinusoid(Dataset):
         targets = amplitude * np.sin(inputs + phase)
 
         # Output tensor
-        inputs = torch.tensor(inputs)
-        targets = torch.tensor(targets)
+        inputs = torch.tensor(inputs, dtype = torch.float)
+        targets = torch.tensor(targets, dtype = torch.float)
 
         return inputs[:self.k_shot], targets[:self.k_shot], inputs[self.k_shot:], targets[self.k_shot:]
 
