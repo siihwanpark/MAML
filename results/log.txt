@@ -1,0 +1,84 @@
+[0/100000] batch loss : 4.6523 | time : 0.15s
+[0/100000] mean test loss : 5.0877 -> 4.3388 by 1 grad steps
+A check point has been generated : checkpoints/iter_0
+[100/100000] batch loss : 4.7791 | time : 4.54s
+[100/100000] mean test loss : 5.6572 -> 4.6694 by 1 grad steps
+[200/100000] batch loss : 3.3937 | time : 4.81s
+[200/100000] mean test loss : 3.7402 -> 2.9961 by 1 grad steps
+[300/100000] batch loss : 2.3697 | time : 4.72s
+[300/100000] mean test loss : 3.0111 -> 2.1587 by 1 grad steps
+[400/100000] batch loss : 2.9323 | time : 4.73s
+[400/100000] mean test loss : 4.1237 -> 2.4397 by 1 grad steps
+[500/100000] batch loss : 1.2239 | time : 4.73s
+[500/100000] mean test loss : 1.8566 -> 1.1694 by 1 grad steps
+[600/100000] batch loss : 2.7554 | time : 4.75s
+[600/100000] mean test loss : 4.9705 -> 2.9463 by 1 grad steps
+[700/100000] batch loss : 1.6861 | time : 4.80s
+[700/100000] mean test loss : 3.6683 -> 1.7311 by 1 grad steps
+[800/100000] batch loss : 1.1271 | time : 4.89s
+[800/100000] mean test loss : 2.4942 -> 1.3177 by 1 grad steps
+[900/100000] batch loss : 1.5407 | time : 4.77s
+[900/100000] mean test loss : 2.7363 -> 1.2978 by 1 grad steps
+[1000/100000] batch loss : 1.7216 | time : 4.76s
+[1000/100000] mean test loss : 5.4123 -> 2.5317 by 1 grad steps
+A check point has been generated : checkpoints/iter_1000
+[1100/100000] batch loss : 1.4968 | time : 4.74s
+[1100/100000] mean test loss : 2.9899 -> 1.1219 by 1 grad steps
+[1200/100000] batch loss : 1.9822 | time : 4.77s
+[1200/100000] mean test loss : 4.5995 -> 1.7443 by 1 grad steps
+[1300/100000] batch loss : 0.7841 | time : 4.85s
+[1300/100000] mean test loss : 1.9134 -> 0.8268 by 1 grad steps
+[1400/100000] batch loss : 1.7236 | time : 4.86s
+[1400/100000] mean test loss : 3.0902 -> 1.2971 by 1 grad steps
+[1500/100000] batch loss : 0.8313 | time : 4.87s
+[1500/100000] mean test loss : 2.3858 -> 0.9217 by 1 grad steps
+[1600/100000] batch loss : 1.3693 | time : 4.86s
+[1600/100000] mean test loss : 2.5907 -> 0.8286 by 1 grad steps
+[1700/100000] batch loss : 0.7516 | time : 4.85s
+[1700/100000] mean test loss : 1.9754 -> 0.8812 by 1 grad steps
+[1800/100000] batch loss : 1.3622 | time : 4.86s
+[1800/100000] mean test loss : 5.6911 -> 1.7557 by 1 grad steps
+[1900/100000] batch loss : 0.7546 | time : 4.89s
+[1900/100000] mean test loss : 2.9858 -> 1.0119 by 1 grad steps
+[2000/100000] batch loss : 0.6490 | time : 4.84s
+[2000/100000] mean test loss : 2.2944 -> 0.6419 by 1 grad steps
+A check point has been generated : checkpoints/iter_2000
+[2100/100000] batch loss : 0.9337 | time : 4.83s
+[2100/100000] mean test loss : 5.3796 -> 1.0274 by 1 grad steps
+[2200/100000] batch loss : 0.5675 | time : 4.81s
+[2200/100000] mean test loss : 2.5064 -> 0.7803 by 1 grad steps
+[2300/100000] batch loss : 0.3138 | time : 4.70s
+[2300/100000] mean test loss : 1.2516 -> 0.3168 by 1 grad steps
+[2400/100000] batch loss : 1.1711 | time : 4.86s
+[2400/100000] mean test loss : 6.3053 -> 1.6221 by 1 grad steps
+[2500/100000] batch loss : 1.5033 | time : 4.83s
+[2500/100000] mean test loss : 7.9318 -> 2.8121 by 1 grad steps
+[2600/100000] batch loss : 1.0411 | time : 4.89s
+[2600/100000] mean test loss : 8.6992 -> 3.2702 by 1 grad steps
+[2700/100000] batch loss : 1.0893 | time : 4.81s
+[2700/100000] mean test loss : 3.1999 -> 0.9684 by 1 grad steps
+[2800/100000] batch loss : 0.8375 | time : 4.77s
+[2800/100000] mean test loss : 3.8953 -> 1.0243 by 1 grad steps
+[2900/100000] batch loss : 0.5833 | time : 4.84s
+[2900/100000] mean test loss : 6.1833 -> 1.8809 by 1 grad steps
+[3000/100000] batch loss : 0.6011 | time : 4.78s
+[3000/100000] mean test loss : 4.2108 -> 0.7430 by 1 grad steps
+A check point has been generated : checkpoints/iter_3000
+[3100/100000] batch loss : 0.5602 | time : 4.82s
+[3100/100000] mean test loss : 5.4943 -> 1.3548 by 1 grad steps
+[3200/100000] batch loss : 1.2425 | time : 4.78s
+[3200/100000] mean test loss : 6.2603 -> 2.0555 by 1 grad steps
+[3300/100000] batch loss : 0.7010 | time : 4.71s
+[3300/100000] mean test loss : 7.3907 -> 2.1048 by 1 grad steps
+[3400/100000] batch loss : 0.5462 | time : 4.78s
+[3400/100000] mean test loss : 3.0657 -> 0.5993 by 1 grad steps
+[3500/100000] batch loss : 0.6203 | time : 4.81s
+[3500/100000] mean test loss : 8.4206 -> 3.5533 by 1 grad steps
+[3600/100000] batch loss : 0.5448 | time : 4.77s
+[3600/100000] mean test loss : 4.0843 -> 0.6467 by 1 grad steps
+[3700/100000] batch loss : 0.3257 | time : 4.40s
+[3700/100000] mean test loss : 1.6927 -> 0.3454 by 1 grad steps
+[3800/100000] batch loss : 0.6270 | time : 4.49s
+[3800/100000] mean test loss : 3.9937 -> 1.1045 by 1 grad steps
+[3900/100000] batch loss : 0.6985 | time : 4.48s
+[3900/100000] mean test loss : 6.0578 -> 1.9378 by 1 grad steps

@@ -8,6 +8,8 @@ from sinusoid import Sinusoid
 from model import Regressor
 
 import os, sys, time, argparse
+import numpy as np
+import matplotlib.pyplot as plt
 
 class Logger(object):
     def __init__(self):
@@ -46,7 +48,7 @@ def main(args):
         outer_optimizer = torch.optim.Adam(regressor.parameters(), lr = 1e-3)
         
         start = time.time()
-        for i, (src_train, trg_train, src_test, trg_test) in enumerate(train_loader):
+        for i, (src_train, trg_train, src_test, trg_test, _) in enumerate(train_loader):
             # src_train : a tensor with size [batch, K, 1]
             # trg_train : a tensor with size [batch, K, 1]
             # src_test : a tensor with size [batch, Q, 1]
@@ -86,7 +88,7 @@ def main(args):
                 start = time.time()
             
             # test
-            if i % 100 == 0:
+            if i % 1000 == 0:
                 pre_loss, post_loss = 0, 0
                 params = OrderedDict((name, param) for (name, param) in regressor.named_parameters())
 
@@ -112,8 +114,12 @@ def main(args):
                 post_loss /= batch_size
                 print('[%d/%d] mean test loss : %.4f -> %.4f by %d grad steps'%(i, len(train_loader), pre_loss.item(), post_loss.item(), num_grad_steps))
             
-            if i % 1000 == 0:
-                save_checkpoint(regressor, 'checkpoints/iter_%d'%(i))
+            if i % 10000 == 0:
+                save_checkpoint(regressor, 'checkpoints/iter_%d.pt'%(i))
+        
+        print("Training Finished")
+        save_checkpoint(regressor, 'checkpoints/final.pt')
+
     else:
         if os.path.exists(args.checkpoint):
             checkpoint = torch.load(args.checkpoint)
@@ -123,7 +129,7 @@ def main(args):
         test_dataset = Sinusoid(k_shot=args.k_shot, q_query=args.query, num_tasks=args.num_tasks)
         test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=True, pin_memory=True)
 
-        for i, (_, _, src_test, trg_test) in enumerate(test_loader):
+        for i, (_, _, src_test, trg_test, (amp, phase)) in enumerate(test_loader):
             src_test, trg_test = src_test.to(device), trg_test.to(device)
             batch_size = src_test.size(0)
 
@@ -131,6 +137,15 @@ def main(args):
             params = OrderedDict((name, param) for (name, param) in regressor.named_parameters())
 
             for j in range(batch_size):
+                #############################################################
+                # plot
+                t = np.arange(-5.0, 5.0, 0.01)
+                gt = amp[j].numpy() * np.sin(t + phase[j].numpy())
+                
+                t = torch.tensor(t, dtype=torch.float).unsqueeze(-1).to(device)
+                pre = regressor.forward_with_params(t, params)
+                #############################################################
+
                 x_test, y_test = src_test[j], trg_test[j] # [Q, 1], [Q, 1]
                 x_test.requires_grad_(True)
 
@@ -148,11 +163,26 @@ def main(args):
                 preds = regressor.forward_with_params(x_test, params)
                 post_loss += criterion(preds, y_test)
 
+                #############################################################
+                # plot
+                post = regressor.forward_with_params(t, params)
+                fig, ax = plt.subplots()
+                t = t.data.cpu().numpy()
+                ax.plot(t, gt, 'r', label = 'ground truth')
+                ax.plot(t, pre.data.cpu().numpy(), label = 'pre update')
+                ax.plot(t, post.data.cpu().numpy(), label = '1 grad step')
+                ax.legend()
+
+                ax.set(title='MAML, K = 10')
+                ax.grid()
+
+                fig.savefig("images/test_%d_%d.png"%(i+1, j+1))
+                #############################################################
+
             pre_loss /= batch_size
             post_loss /= batch_size
-            print('[%d/%d] mean test loss : %.4f -> %.4f by %d grad steps'%(i, len(train_loader), pre_loss.item(), post_loss.item(), num_grad_steps))    
+            print('[%d/%d] mean test loss : %.4f -> %.4f by %d grad steps'%(i+1, len(test_loader), pre_loss.item(), post_loss.item(), num_grad_steps))    
 
-        
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='MAML')
@@ -169,7 +199,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--num_tasks',
         type=int,
-        default=100000)
+        default=1000000)
 
     parser.add_argument(
         '--batch_size',
@@ -183,7 +213,7 @@ if __name__ == '__main__':
     parser.add_argument(
         '--checkpoint',
         type=str,
-        default='checkpoints/best'
+        default='checkpoints/final.pt'
     )
 
     args = parser.parse_args()
