@@ -12,11 +12,8 @@ class Regressor(nn.Module):
             nn.ReLU(),
             nn.Linear(40,1)
         )
-    
-    def forward(self, x):
-        return self.layers(x)
 
-    def forward_with_params(self, x, params = None):
+    def forward(self, x, params = None):
         # x : a tensor with size 1
         # params : an ordered dictionary of parameters
         if params == None:
