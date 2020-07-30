@@ -43,7 +43,7 @@ def batch_test(iter, src_test, trg_test, amp, phase, batch_size, params, regress
         ax.plot(t, post.data.cpu().numpy(), label = '1 grad step')
         ax.legend()
 
-        ax.set(title='MAML, K = 10')
+        ax.set(title='MAML, K = 10, error : %.3f->%.3f'%(pre_loss, post_loss))
         ax.grid()
 
         fig.savefig("images/test_%d_iter%d.png"%(j+1, iter))
