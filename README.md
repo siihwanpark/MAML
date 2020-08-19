@@ -1,5 +1,5 @@
 # MAML
-PyTorch implementation of the paper 'Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks'
+PyTorch implementation of the paper 'Model-Agnostic Meta-Learning for Fast Adaptation of Deep Networks' (ICML 2017)
 
 ## Requirements
 * PyTorch 1.4.x > 
